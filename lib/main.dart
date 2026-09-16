@@ -34,7 +34,6 @@ List<Artwork> artworks = [
     imagePath: 'assets/images/artwork/the_scream.jpg',
   ),
 ];
-
 void main() {
   runApp(const MainApp());
 }
