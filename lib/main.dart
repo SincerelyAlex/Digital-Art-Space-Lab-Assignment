@@ -56,15 +56,51 @@ class _MainAppState extends State<MainApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(artworks[currentArtIndex].imagePath),
-              Text(artworks[currentArtIndex].title),
-              Text(artworks[currentArtIndex].artist),
-              Text(artworks[currentArtIndex].year),
+              Image.asset(artworks[currentArtIndex].imagePath,
+                width: 280,
+                height: 320,
+              ),
+              Text(
+                artworks[currentArtIndex].title,
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
+              Text(
+                '${artworks[currentArtIndex].artist}, ${artworks[currentArtIndex].year}',
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        currentArtIndex--;
+                        if (currentArtIndex < 0) {
+                          currentArtIndex = artworks.length - 1;
+                        }
+                      });
+                    },
+                    child: Text('Previous'),
+                  ),
+                  const SizedBox(width: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        currentArtIndex++;
+                        if (currentArtIndex >= artworks.length) {
+                          currentArtIndex = 0;
+                        }
+                      });
+                    },
+                    child: Text('Next'),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
-    
     );
   }
 }
