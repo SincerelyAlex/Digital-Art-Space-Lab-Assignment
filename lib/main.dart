@@ -33,6 +33,12 @@ List<Artwork> artworks = [
     year: '1893',
     imagePath: 'assets/images/artwork/the_scream.jpg',
   ),
+  Artwork(
+    title: 'The Great Wave off Kanagawa',
+    artist: 'Katsushika Hokusai',
+    year: '1831',
+    imagePath: 'assets/images/artwork/great_wave.jpg',
+  ),
 ];
 void main() {
   runApp(const MainApp());
@@ -52,27 +58,58 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Digital Art Space')),
-        body: Center(
+        body: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsets.all(32),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 20,
             children: [
-              Image.asset(artworks[currentArtIndex].imagePath,
-                width: 280,
-                height: 320,
-              ),
-              Text(
-                artworks[currentArtIndex].title,
-                style: TextStyle(
-                  fontSize: 24,
+              Container(
+                height: 340,
+                alignment: Alignment.center,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxHeight: 340,
+                    maxWidth: 300,
+                  ),
+                  padding: EdgeInsets.all(16), 
+                  decoration: BoxDecoration(
+                    color: Colors.brown,
+                    border: Border.all(color: Colors.amber, width: 2),
+                  ),
+                  child: Image.asset(artworks[currentArtIndex].imagePath,
+                  ),
                 ),
               ),
-              Text(
-                '${artworks[currentArtIndex].artist}, ${artworks[currentArtIndex].year}',
+              Container(
+                width : 300,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.brown[200],
+                  border: Border.all(color: Colors.black, width: 1),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      artworks[currentArtIndex].title,
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                    Text(
+                      '${artworks[currentArtIndex].artist} (${artworks[currentArtIndex].year})',
+                    ),
+                  ],
+                )
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 5,
+                    ),
                     onPressed: () {
                       setState(() {
                         currentArtIndex--;
@@ -85,6 +122,9 @@ class _MainAppState extends State<MainApp> {
                   ),
                   const SizedBox(width: 20),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 5,
+                    ),
                     onPressed: () {
                       setState(() {
                         currentArtIndex++;
