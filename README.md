@@ -5,9 +5,9 @@ application. The applicatiom should display an array of artwork to the user.
 
 All artwork are in the public domain and are used for educational purposes.
 The following paintings were used:
-The Starry Night by Vincent van Gogh
-The Great Wave off Kanagawa by Katsushika Hookusai
-Mona Lisa by Leonardo da Vinci
+The Starry Night by Vincent van Gogh,  
+The Great Wave off Kanagawa by Katsushika Hookusai,  
+Mona Lisa by Leonardo da Vinci,  
 The Scream by Edvard Munch
 
 All images were sourced from Wikipedia.
