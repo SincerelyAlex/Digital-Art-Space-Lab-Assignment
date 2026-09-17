@@ -56,8 +56,10 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.brown[100],
+      ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Digital Art Space')),
         body: Container(
           alignment: Alignment.center,
           padding: EdgeInsets.all(32),
@@ -66,12 +68,12 @@ class _MainAppState extends State<MainApp> {
             spacing: 20,
             children: [
               Container(
-                height: 340,
+                height: 440,
                 alignment: Alignment.center,
                 child: Container(
                   constraints: BoxConstraints(
                     maxHeight: 340,
-                    maxWidth: 300,
+                    maxWidth: 360,
                   ),
                   padding: EdgeInsets.all(16), 
                   decoration: BoxDecoration(
@@ -84,30 +86,48 @@ class _MainAppState extends State<MainApp> {
               ),
               Container(
                 width : 300,
-                padding: const EdgeInsets.all(16),
+                height: 130,
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Colors.brown[200],
                   border: Border.all(color: Colors.black, width: 1),
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       artworks[currentArtIndex].title,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 24,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       '${artworks[currentArtIndex].artist} (${artworks[currentArtIndex].year})',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 )
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 16,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      minimumSize: Size(120, 50),
+                      backgroundColor: Colors.brown,
+                      foregroundColor: Colors.white,
                       elevation: 5,
                     ),
                     onPressed: () {
@@ -123,6 +143,9 @@ class _MainAppState extends State<MainApp> {
                   const SizedBox(width: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      minimumSize: Size(120, 50),
+                      backgroundColor: Colors.brown,
+                      foregroundColor: Colors.white,
                       elevation: 5,
                     ),
                     onPressed: () {
